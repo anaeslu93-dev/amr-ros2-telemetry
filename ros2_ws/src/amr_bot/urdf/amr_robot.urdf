@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="amr_robot">
+
+  <!-- 1. BASE O CHASIS DEL ROBOT (Caja rectangular) -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.6 0.4 0.2"/> <!-- 60cm largo, 40cm ancho, 20cm alto -->
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.2 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.6 0.4 0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 2. SENSOR LIDAR (Cilindro pequeño colocado arriba) -->
+  <link name="laser_frame">
+    <visual>
+      <geometry>
+        <cylinder radius="0.08" length="0.05"/> <!-- 8cm radio, 5cm altura -->
+      </geometry>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- UNIÓN (JOINT) ENTRE EL CHASIS Y EL LIDAR -->
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser_frame"/>
+    <origin xyz="0.15 0.0 0.125" rpy="0 0 0"/> <!-- Colocado delante y arriba -->
+  </joint>
+
+  <!-- 3. CÁMARA RGB (Caja pequeña frontal) -->
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.03 0.1 0.03"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.8 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- UNIÓN ENTRE EL CHASIS Y LA CÁMARA -->
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.30 0.0 0.0" rpy="0 0 0"/> <!-- Colocado en el frontal -->
+  </joint>
+
+</robot>
