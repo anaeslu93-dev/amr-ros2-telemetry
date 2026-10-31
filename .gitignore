@@ -1,0 +1,18 @@
+# --- ROS2 / Colcon (Carpetas de compilación y logs) ---
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# --- Configuración de VS Code y editores ---
+.vscode/
+.idea/
+
+# --- Archivos de entorno y Python ---
+__pycache__/
+*.pyc
+*.launch.py.py
+
+# --- Archivos temporales del sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
